@@ -290,7 +290,7 @@ function run($command, $options = [])
         $command = "cd $workingPath && ($command)";
     }
 
-    $env = get('env', []) + ($options['env'] ?? []);
+    $env = [get('env', [])] + ($options['env'] ?? []);
     if (!empty($env)) {
         $env = array_to_string($env);
         $command = "export $env; $command";
@@ -320,7 +320,7 @@ function runLocally($command, $options = [])
     $hostname = 'localhost';
     $command = parse($command);
 
-    $env = get('env', []) + ($options['env'] ?? []);
+    $env = [get('env', [])] + ($options['env'] ?? []);
     if (!empty($env)) {
         $env = array_to_string($env);
         $command = "export $env; $command";
